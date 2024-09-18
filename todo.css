@@ -1,0 +1,115 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgb(180, 66, 58);
+  background: linear-gradient(
+    90deg,
+    rgba(180, 66, 58, 1) 11%,
+    rgba(253, 156, 29, 1) 50%,
+    rgba(252, 225, 69, 1) 100%
+  );
+}
+.todoapp {
+  background-color: white;
+  padding: 20px 40px;
+  text-align: center; 
+}
+#mode-toggle {
+  border: none;
+  background: rgb(180, 66, 58);
+  background: linear-gradient(
+    90deg,
+    rgba(180, 66, 58, 1) 11%,
+    rgba(253, 156, 29, 1) 50%,
+    rgba(252, 225, 69, 1) 100%
+  );
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.todoapp h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+}
+#input-name {
+  width: 300px;
+  height: 38px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(244, 242, 242);
+}
+#btn-add {
+  border: none;
+  background: rgb(180, 66, 58);
+  background: linear-gradient(
+    90deg,
+    rgba(180, 66, 58, 1) 11%,
+    rgba(253, 156, 29, 1) 50%,
+    rgba(252, 225, 69, 1) 100%
+  );
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+#to-do-list {
+  list-style: none;
+  width: auto;
+  text-align: center;
+  font: bold 20px 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#to-do-list button {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  margin-left: 150px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+}
+#to-do-list button:hover {
+    background: rgb(180, 66, 58);
+    background: linear-gradient(
+      90deg,
+      rgba(180, 66, 58, 1) 11%,
+      rgba(253, 156, 29, 1) 50%,
+      rgba(252, 225, 69, 1) 100%
+    );
+  color:white ;
+  cursor: pointer;
+}
+.todoapp h3{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dark-mode #mode-toggle,
+.dark-mode .container,
+.dark-mode #btn-add {
+  background: rgb(1, 1, 15);
+  background: linear-gradient(
+    140deg,
+    rgba(1, 1, 15, 1) 35%,
+    rgba(50, 62, 224, 1) 81%,
+    rgba(25, 108, 249, 1) 100%
+  );
+}
+
+.dark-mode #to-do-list button:hover {
+   background: rgb(1, 1, 15);
+  background: linear-gradient(
+    140deg,
+    rgba(1, 1, 15, 1) 35%,
+    rgba(50, 62, 224, 1) 81%,
+    rgba(25, 108, 249, 1) 100%
+  );
+  color:white ;
+  cursor: pointer;
+}

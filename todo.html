@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+      integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="todo.css" />
+    <title>Todo</title>
+  </head>
+  <body>
+    <section class="container">
+      <div class="todoapp">
+        <button id="mode-toggle">Dark Mode</button>
+        <h1>To-do list</h1>
+        <div>
+          <form action="" id="form">
+            <input type="text" id="input-name" />
+            <button type="submit" id="btn-add">Add</button>
+            <h3 id="list-count">Total Tasks : 0</h3>
+          </form>
+        </div>
+
+        <ul id="to-do-list"></ul>
+      </div>
+    </section>
+    <script src="todo-count.js"></script>
+    <script src="todo-mode.js"></script>
+    <script>
+      const inputElem = document.querySelector("#input-name");
+      const form = document.querySelector("#form");
+      const listElem = document.querySelector("#to-do-list");
+      const buttonElem = document.querySelector("#to-do-list button");
+      //Saymaq ucun
+      const listCount = document.querySelector("#list-count");
+
+
+      const toDoArray = JSON.parse(localStorage.getItem("to-do-list")) || [];
+
+      function updateTodoList() {
+        listElem.innerHTML = "";
+
+        for (const key in toDoArray) {
+          const li = document.createElement("li");
+
+          const span = document.createElement("span");
+          span.innerText = toDoArray[key];
+
+          const button = document.createElement("button");
+          button.innerHTML = "delete";
+          button.setAttribute("key", key);
+          button.classList.add("delete");
+          //saymaq
+          button.onclick = function () {
+            listElem.removeChild(li);
+            updateListCount();
+          };
+          li.appendChild(button);
+          listElem.appendChild(li);
+          inputElem.value = "";
+          updateListCount();
+          //ucun
+
+          li.appendChild(span);
+          li.appendChild(button);
+          listElem.appendChild(li);
+        }
+
+        localStorage.setItem("to-do-list", JSON.stringify(toDoArray));
+      }
+
+      function addToList(value) {
+        if (value === "") return;
+
+        toDoArray.push(value);
+
+        updateTodoList();
+        inputElem.value = "";
+        inputElem.focus();
+      }
+
+      function deleteItem(key) {
+        toDoArray.splice(Number(key), 1);
+
+        updateTodoList();
+        inputElem.value = "";
+        inputElem.focus();
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        addToList(inputElem.value);
+      });
+
+      document.addEventListener("click", (e) => {
+        const el = e.target;
+        if (el.classList.contains("delete")) {
+          deleteItem(el.getAttribute("key"));
+        }
+      });
+
+      //saymaq
+      countToDoList();
+      function updateListCount() {
+        const totalTasks = listElem.children.length;
+        listCount.textContent = `Total Tasks: ${totalTasks}`;
+      }
+      //ucun
+
+    </script>
+  </body>
+</html>
